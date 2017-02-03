@@ -1,0 +1,4 @@
+Cadence® Virtuoso simulation files & libraries. 
+
+- cds.lib: library w/ MOSFET model & circuit schematic.
+- CDS.log, CDS.log.cdslck: logfiles
