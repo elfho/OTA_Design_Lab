@@ -1,0 +1,7 @@
+# File Created by  at Thu Feb  2 19:18:57 2017
+# assisted by CdsLibEditor
+SOFTINCLUDE /opt/Cadence/share/cdssetup/dfII/cds.lib
+SOFTINCLUDE /opt/Cadence/share/cdssetup/hdl/cds.lib
+SOFTINCLUDE /opt/Cadence/share/cdssetup/pic/cds.lib
+SOFTINCLUDE /opt/Cadence/share/cdssetup/sg/cds.lib
+DEFINE acdLib2016 Downloads/acdLib2016
