@@ -38,10 +38,12 @@ During all the design we are going to assume a load capacitance of 1pF.
 At this moment the M6's were not yet fixed , but for this calcultaion we assume $C_1+C_L=2pF$\footnote{We will check at the end that this assumption results confirmed.}
 
 \begin{equation}
-	\phi_m=180-actg(\frac{GBWP}{f_o})-acrtg(\frac{g_{m1}}{g_{m6})-arctg(\frac{g_{m1}} {C_c}\frac{C_L+C_1}{g_{m6}}) 
+	\phi_m=180- actg(\frac {GBWP} {f_o} )-acrtg(\frac { g_{m1} }{ g_{m6}})-arctg(\frac{g_{m1}} {C_c}\frac{C_L+C_1}{g_{m6}})=60 
 \end{equation}
 
+From this equation we get $g_{m6} > 2mS $ which is quite high , but using this stage\footnote{Which gives a positive zero} we have deal with some trade-offs.
 
+From the transconductance we can find the current of the second stage and the form factor of M6 and m7.
 
 
 As first step, we choose the tail current of the first stage of XXX uA, in order to comply with CMRR requirement.
