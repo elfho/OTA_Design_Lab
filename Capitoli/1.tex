@@ -1,13 +1,60 @@
 \chapter{Part 1} % (fold)
 \label{cha:part_1}
 
+
+As first step starting from the gain requirements we choose the lenght of transistors $M_1,M_2,M_3,M_4,M_6,M_7.$
+
+Splitting the gain in half beetween the 2 stages we get\footnote{The evaluation of the second stage's gain has been done exactly in the same way}:
+
+\begin{equation}
+	G_{1^{st} stage} = 100 = \frac{2V_AL_1L_3}{V_{ov_1}L_{min}(L_1+L_3)}
+\end{equation}
+
+
+In this first step we decided to keep $L_1=L_2=L_3=L_4$ and $L_6=L_7$.
+
+Respecting the constrait of $V_{ov_x} > 200mv$ we choose:
+
+\begin{itemize}
+	\item $V_{ov_1}=V_{ov_2}= 0.2V$ in order to keep the $g_m$ as high as possible in order to respect the bandwith specification\footnote{This will be also good for phase margin}.
+	\item $V_{ov_3}=V_{ov_4}= 0.3V$ in this way we will have $g_{m3}=g_{m4}<g_{m1}=g_{m2}=$, squeezing the input referred noise.
+	\item $V_{ov_5}= 0.4V$ to minimize the area\footnote{Accepting some losses in terms of CMRR}.
+	\item $V_{ov_6}=V_{ov_7}= 0.2V$ in order to keep o good output voltage swing. 
+\end{itemize}
+
+Then starting from the bandwith and the phase margin specifications we tune the transconductance of the input pair and the value of the compensation capacitance, going through this calculation:
+
+\begin{equation}
+	GBWP=40MHz=\frac{g_{m1}}{2 \pi C_c}
+\end{equation}
+Assuming for this step $C_c = 1pF$
+Then we check if the choosen values keep us in the stability contraint.
+
+\begin{equation}
+	C_c> \frac{g_{m1}}{g_{m6}}(C_1+C_L)
+\end{equation}
+
+During all the design we are going to assume a load capacitance of 1pF.
+At this moment the M6's were not yet fixed , but for this calcultaion we assume $C_1+C_L=2pF$\footnote{We will check at the end that this assumption results confirmed.}
+
+\begin{equation}
+	\phi_m=180-actg(\frac{GBWP}{f_o})-acrtg(\frac{g_{m1}}{g_{m6})-arctg(\frac{g_{m1}} {C_c}\frac{C_L+C_1}{g_{m6}}) 
+\end{equation}
+
+
+
+
 As first step, we choose the tail current of the first stage of XXX uA, in order to comply with CMRR requirement.
 Then, we choose the overdrive voltage of the NMOS of the second stage, in order to have a 1 kHz noise corner frequency, using the following equation:
 
 
 
 Finally, we choose the W/L of the tail transistor to be 10u/25u, so that the slew rate was higher than the requested one.
+
+
+
 According to our knowledge, output transistor are too narrow, but we couldn’t find a better solution.
+
 At the end, we were able to build an amplifier with a GBWP of 40 MHz, with a 60 deg phase margin, that consumes XXX uA.
 
 
