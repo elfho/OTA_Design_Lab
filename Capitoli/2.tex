@@ -2,8 +2,70 @@
 \label{cha:part_2}
 
 Since we were asked to reduce the power consumption, we needed to use a different compensation technique.
-As the supply voltage of the OTA is 3 V, the more suitable compensation technique is the feedforward one, as, given a fixed bandwidth, it allows a lower input current noise of the OTA.
-We managed to re-design whose frequency response is the same one as the Miller one, with half the current consumption.
+
+We decided to use the Ahuja compensation technique embeeding the current buffer in the first stage , in order to use the already existing current to bias the current buffer.
+
+\section{Gain, Bandwith and Stability}
+
+\subsection{Gain} % (fold)
+\label{sec:gain}
+
+For the gain , the current buffer will act as cascode for the active load of the input pair improving the gain.
+
+For this design we decided to split the gain in the following way:
+
+\begin{equation}
+	G_{1^{st}_Stage}=286
+\end{equation}
+
+\begin{equation}
+	G_{2^{nd}_{Stage}}=35
+\end{equation}
 
 
+For the first step we neglect the contribution of the cascoded load considering only $R_{01}$ as load.
+
+We obtain $L_1=1.5 \mu m$ , but it turns out that with this sizing , the contribution of the cascoded load in parallel to $R_{01}$ lead us out of the specification.
+
+At the end we decided to set $L_{1,2} = 1.6 \mu m$ which gives us a gain of 300.
+
+For the moment we set $L_3=L_4$ to the minimum length.
+
+We set the Overdrive voltages as :
+
+\begin{itemize}
+	\item $V_{ov_1}=V_{ov_2}=0.2$ to have the maximum transconductance, in order to maximize the gain and reduce the noise of the mirror.
+
+	\item $V_{ov_3}=V_{ov_4}=0.4$ in order to minimize the input referred noise contribution of the mirror couple.
+
+	\item $V_{ov_5}=0.2$ we made this choice in order to use the same reference used by the second stage , this will let us to have only one reference generation circuit.
+
+	\item $V_{ov_cas1}=V_{ov_cas2}=0.2$ , the lower possible in order to not degrade the common mode input voltage range.
+
+	\item $V_{ov_6}=V_{ov_7}=0.2$ to have our amplifier almost rail-to-rail.
+
+\end{itemize}
+
+\subsection{Bandwith} % (fold)
+\label{sub:bandwith}
+
+As in the previous design , assuming for the moment $C_c=1pF$ we get $g_{m1}= 250 \mu S$
+
+% subsection bandwith (end)
+
+
+
+\subsection{Phase Margin} % (fold)
+\label{sub:phase_margin}
+
+The compensation technique will not change the frequency of the first pole, and will give a negative zero at $f_z= 	\frac{g_{mCAS}}{2 \pi C_c}$ which improves our phase margin.
+
+\begin{equation}
+	\phi _m= 180 - 90 + arctg(\frac{g_{m1}}{g_{mCAS}}) - arct(DIOCANE)
+\end{equation}
+
+
+% subsection phase_margin (end)_sub
+% subsubsection _sub (end)
+% section gain (end)
 % chapter part_2 (end)

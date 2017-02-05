@@ -1,6 +1,13 @@
 \chapter{Part 1} % (fold)
 \label{cha:part_1}
 
+\section{Gain, Bandwith and Stability} % (fold)
+\label{sec:gain_and_bandwith}
+
+\subsection{Gain} % (fold)
+\label{subsec:gain}
+
+
 
 As first step starting from the gain requirements we choose the lenght of transistors $M_1,M_2,M_3,M_4,M_6,M_7.$
 
@@ -22,13 +29,27 @@ Respecting the constrait of $V_{ov_x} > 200mv$ we choose:
 	\item $V_{ov_6}=V_{ov_7}= 0.2V$ in order to keep o good output voltage swing. 
 \end{itemize}
 
+% section gain (end)
+
+\subsection{Bandwidth} % (fold)
+\label{subsec:bandwidth}
+
+
+
 Then starting from the bandwith and the phase margin specifications we tune the transconductance of the input pair and the value of the compensation capacitance, going through this calculation:
 
 \begin{equation}
 	GBWP=40MHz=\frac{g_{m1}}{2 \pi C_c}
 \end{equation}
 Assuming for this step $C_c = 1pF$
-Then we check if the choosen values keep us in the stability contraint.
+Then we will check if the choosen values keep us in the stability contraint.
+
+% section bandwidth (end)
+
+\subsection{Phase Margin} % (fold)
+\label{subsec:phase_margin}
+
+
 
 \begin{equation}
 	C_c> \frac{g_{m1}}{g_{m6}}(C_1+C_L)
@@ -41,10 +62,84 @@ At this moment the M6's were not yet fixed , but for this calcultaion we assume 
 	\phi_m=180- actg(\frac {GBWP} {f_o} )-acrtg(\frac { g_{m1} }{ g_{m6}})-arctg(\frac{g_{m1}} {C_c}\frac{C_L+C_1}{g_{m6}})=60 
 \end{equation}
 
-From this equation we get $g_{m6} > 2mS $ which is quite high , but using this stage\footnote{Which gives a positive zero} we have deal with some trade-offs.
+From this equation we get $g_{m6} = 2mS $ which is quite high , but using this stage\footnote{Which gives a positive zero.} we have deal with some trade-offs.
 
-From the transconductance we can find the current of the second stage and the form factor of M6 and m7.
+From the transconductance of M6 we can find the current flowing in the second stage:
+\begin{equation}
+  I_6=I_7= \frac{g_{m6}V_{ov_6}}{2}
+\end{equation}
 
+and the form factors:
+
+\begin{itemize}
+    \item $(\frac{W}{L})_6=200=\frac{200 \mu m}{1 \mu m}$
+ 
+    \item $(\frac{W}{L})_7=100=\frac{100 \mu m}{1 \mu m}$
+    
+  \end{itemize}  
+
+Now that we know as $L_6$ as $w_6$ we can verify the real value of $C_1$ which result to be:
+
+\begin{equation}
+  C_1 = C_{ox} \gamma W_6 L_6 = 0.66pF
+\end{equation}
+
+which confirm our hypotesys made in the step of the compensation capacitance sizing\footnote{As the real value is lower than the one used for calculation the performances are going to be improved}.
+
+% section phase_margin (end)
+
+% section gain_and_bandwith (end)
+
+\section{Noise} % (fold)
+\label{sec:noise}
+
+
+\subsection{White Noise} % (fold)
+\label{ssub:white_noise}
+
+
+The input referred noise with this sizing results to be:
+
+\begin{equation}
+  S_v^n= \frac{8KT\gamma}{g_{m1}}(1+\frac{g_ {m3}}{g_{m1}}) = (11.51 \frac{nV}{\sqrt{Hz}})^2
+\end{equation}
+
+In order to reduce $g_{m3,4}$ and to get our target we decide to increase $V_{ov_4}$ to $0.4V$
+% subsubsection white_noise (end)
+
+\subsection{Noise Corner Frequency} % (fold)
+\label{ssub:noise_corner_frequency}
+
+The NCF results to be in order of $100KHz$ so we decided to increse $(WL)_{3,4}$ of a factor 6,5 in order to have the NCF below 10KHz.
+
+% subsubsection noise_corner_frequency (end)
+
+% section noise (end)
+
+\section{Results} % (fold)
+\label{sec:results}
+
+
+\begin{equation}
+  E_n^2=( 11.51 \frac {nV} { \sqrt{HZ}})^2
+\end{equation}
+
+\begin{equation}
+  \phi_m=68
+\end{equation}
+
+\begin{equation}
+  GBWP=40MHz
+\end{equation}
+
+\begin{equation}
+  Gain=150dB
+\end{equation}
+% section results (end)
+
+\begin{equation}
+  Current \ \ Consumption = 250 \mu A
+\end{equation}
 
 \begin{center}
 \begin{circuitikz} 
@@ -59,9 +154,7 @@ From the transconductance we can find the current of the second stage and the fo
    \draw (-2,0) to[short] (-2,-0.5);
    \draw(2,0) to[short] (2,-0.5);
    \draw(-2,-1.5) to[short] (0,-1.5);
-
    \draw(-2.5,1.5) to[short] (2.5,1.5);
-   
    \draw(-1.1,-2) to[short] (1.1,-2);
    \draw(-2.5,-2.77) to[short] (2.5,-2.77);
    \draw(-2.5,-2.77) to[short] (2.5,-2.77);
@@ -69,8 +162,6 @@ From the transconductance we can find the current of the second stage and the fo
    \draw (0,-2.77) -- (0,-2.77) node[ground]{};
 
 \end{circuitikz} \end{center}
-
-
 
 
 % chapter part_1 (end)
