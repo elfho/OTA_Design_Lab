@@ -1,0 +1,16 @@
+#
+# Edit Lock-Stake file. CAUTION: Please do not change.
+#
+# Information about current Edit Lock Owner.
+#
+LockStakeVersion               1.1
+LoginName                      guest0101
+HostName                       localhost.localdomain
+ProcessIdentifier              4207
+ProcessCreationTime_UTC        1486059459
+ProcessCreationTime_Readable   Thu Feb  2 19:17:39 2017 CET
+AppIdentifier                  /opt/Cadence/tools.lnx86/dfII/bin/32bit/virtuoso
+OSType                         lnx86
+ReasonForPlacingEditLock       Set lock by hiiLockFile
+FilePathUsedToEditLock         /data/home/guest0101/CDS.log
+TimeEditLocked                 Thu Feb  2 19:17:39 2017 CET
