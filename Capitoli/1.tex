@@ -46,18 +46,31 @@ From this equation we get $g_{m6} > 2mS $ which is quite high , but using this s
 From the transconductance we can find the current of the second stage and the form factor of M6 and m7.
 
 
-As first step, we choose the tail current of the first stage of XXX uA, in order to comply with CMRR requirement.
-Then, we choose the overdrive voltage of the NMOS of the second stage, in order to have a 1 kHz noise corner frequency, using the following equation:
+\begin{center}
+\begin{circuitikz} 
+    
+    \ctikzset{tripoles/mos style/arrows}
+    \draw (-2,-1) node[ pmos ] {}; %input sx
+   \draw (2,-1) node[ pmos,xscale = -1 ] {};  %input dx
+   \draw (0,0.75) node[ pmos ] {}; %tail
+   \draw (-2,-2) node[ nmos,xscale = -1 ] {}; %mirror sx
+   \draw (2,-2) node[ nmos ] {};  %mirror dx
+   \draw (-2,0) to[short] (2,0);
+   \draw (-2,0) to[short] (-2,-0.5);
+   \draw(2,0) to[short] (2,-0.5);
+   \draw(-2,-1.5) to[short] (0,-1.5);
+
+   \draw(-2.5,1.5) to[short] (2.5,1.5);
+   
+   \draw(-1.1,-2) to[short] (1.1,-2);
+   \draw(-2.5,-2.77) to[short] (2.5,-2.77);
+   \draw(-2.5,-2.77) to[short] (2.5,-2.77);
+   \draw(0,-1.5) to[short] (0,-2);
+   \draw (0,-2.77) -- (0,-2.77) node[ground]{};
+
+\end{circuitikz} \end{center}
 
 
-
-Finally, we choose the W/L of the tail transistor to be 10u/25u, so that the slew rate was higher than the requested one.
-
-
-
-According to our knowledge, output transistor are too narrow, but we couldn’t find a better solution.
-
-At the end, we were able to build an amplifier with a GBWP of 40 MHz, with a 60 deg phase margin, that consumes XXX uA.
 
 
 % chapter part_1 (end)
