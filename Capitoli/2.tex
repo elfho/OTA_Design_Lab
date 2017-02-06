@@ -49,20 +49,46 @@ We set the Overdrive voltages as :
 \subsection{Bandwith} % (fold)
 \label{sub:bandwith}
 
-As in the previous design , assuming for the moment $C_c=1pF$ we get $g_{m1}= 250 \mu S$
+As in the previous design ,starting from the GBWP specification and assuming for the moment $C_c=1pF$ we get $g_{m1}= 250 \mu S$ 
 
 % subsection bandwith (end)
-
-
 
 \subsection{Phase Margin} % (fold)
 \label{sub:phase_margin}
 
-The compensation technique will not change the frequency of the first pole, and will give a negative zero at $f_z= 	\frac{g_{mCAS}}{2 \pi C_c}$ which improves our phase margin.
+The compensation technique will not change the frequency of the first pole, and we can say with coarse approximation that it gives a negative zero at $f_z= 	\frac{g_{mCAS}}{2 \pi C_c}$ which improves our phase margin and .
 
 \begin{equation}
-	\phi _m= 180 - 90 + arctg(\frac{g_{m1}}{g_{mCAS}}) - arct(DIOCANE)
+	\phi _m= 180 - 90 + arctg(\frac{g_{m1}}{g_{mCAS}}) - arct()
 \end{equation}
+
+
+From the simulation it results that we have an in-band-doublet which gives as a peaking in the phase margin , taking as to a value of 144.7 phase margin.
+
+
+
+It turns out by the simulation that we cannot have the gate of M6 at 0.8V as it's lower limit it's fixed at 1.2V by the saturation of $M_{CAS2}$.
+So we decided to add a transdiode between the source of M6 and ground , in order to have a consistent bias.
+
+\section{Noise} % (fold)
+\label{sec:noise}
+
+
+\subsection{White Noise} % (fold)
+\label{sub:white_noise}
+
+The input reffered noise is going to be same as in stage of part 1 as the transconductance of M1, M2, M3 and M4 were not been modified.
+
+\subsection{Noise Corner Frequency} % (fold)
+\label{sub:noise_corner_frequency}
+
+The noise corner frequency results to be 8.358KHz and the simulation confirms our result.
+
+
+
+% subsection noise_corner_frequency (end)
+% subsection white_noise (end)
+% section noise (end)
 
 
 % subsection phase_margin (end)_sub
