@@ -25,7 +25,7 @@ Splitting the gain in half beetween the 2 stages we get\footnote{The evaluation 
 
 In this first step we decided to keep $L_1=L_2=L_3=L_4$ and $L_6=L_7$.
 
-Respecting the constrait of $V_{ov_x} > 200mv$ we choose:
+Respecting the constraint of $V_{ov_x} > 200mv$ we choose:
 
 \begin{itemize}
 	\item $V_{ov_1}=V_{ov_2}= 0.2V$ in order to keep the $g_m$ as high as possible in order to respect the bandwith specification\footnote{This will be also good for phase margin}.
@@ -52,7 +52,7 @@ Then we will check if the choosen values keep us in the stability contraint.
 
 
 \centering
-\includegraphics[width=1\textwidth]{Capitoli/gainprimo.png}
+\includegraphics[width=0.5\textwidth]{Capitoli/gainprimo.png}
 \raggedright
 
 % section bandwidth (end)
@@ -150,21 +150,37 @@ The NCF results to be in order of $100KHz$ so we decided to increse $(WL)_{3,4}$
 \end{equation}
 
 \begin{equation}
-  \phi_m=68
+  \phi_m=69.25
 \end{equation}
 
 \begin{equation}
-  GBWP=40MHz
+  GBWP=41.69MHz
 \end{equation}
 
 \begin{equation}
-  Gain=150dB
+  Gain=83.55dB
 \end{equation}
 % section results (end)
 
 \begin{equation}
-  Current \ \ Consumption = 250 \mu A
+  Current \ \ Consumption = 813.5 \mu A
 \end{equation}
 
+
+\begin{table}[]
+\centering
+\caption{PART 1 SIZING}
+\label{my-label}
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+      & W      & L      & I      & V\_d   & V\_s & V\_g   \\ \hline
+M1 M2 & 25u    & 1u     & 26.62u & 0.994V & 2.3V & 1.5V   \\ \hline
+M3 M4 & 16.8u  & 4.965u & 26.62u & 0.994V & 0V   & 0.994V \\ \hline
+M5    & 4.375u & 0.35u  & 53.24u & 2.3V   & 3V   & 2.007V \\ \hline
+M6    & 150u   & 1.5u   & 815u   & 1.408V & 0V   & 0.994V \\ \hline
+M7    & 300u   & 1.5u   & 815u   & 1.480V & 3V   & 2.027V \\ \hline
+M8    & 0.35u  & 0.35u  & 4u     & 2.007V & 3V   & 2.007V \\ \hline
+\end{tabular}
+\end{table}
 
 % chapter part_1 (end)

@@ -1,6 +1,13 @@
 \chapter{Part 2} % (fold)
 \label{cha:part_2}
 
+
+\centering
+\includegraphics[width=1\textwidth]{Capitoli/whole2.png}
+\raggedright
+
+
+
 Since we were asked to reduce the power consumption, we needed to use a different compensation technique.
 
 We decided to use the Ahuja compensation technique embeeding the current buffer in the first stage , in order to use the already existing current to bias the current buffer.
@@ -45,7 +52,7 @@ We set the Overdrive voltages as :
 
 
 \centering
-\includegraphics[width=1\textwidth]{Capitoli/dc.png}
+\includegraphics[width=0.6\textwidth]{Capitoli/dc.png}
 \raggedright
 
 
@@ -103,12 +110,103 @@ The noise corner frequency results to be 8.358KHz and the simulation confirms ou
 \includegraphics[width=1\textwidth]{Capitoli/ncf.png}
 \raggedright
 
+
+\section{Bangap Reference}
+
+
+To have our current/voltage reference decoupled, as much as possible, from nominal values of components we used a self biasing circuit derived from tha bandgap topology.
+
+
+\centering
+\includegraphics[width=1\textwidth]{Capitoli/bg.png}
+\raggedright
+
+
+In particular for this circuit we set:
+
+\begin{itemize}
+
+	\item $ (\frac{W}{L})_{bandgap-down-DX} = \frac{0.83\mu m}{0.35 \mu m}$
+	
+	\item $(\frac{W}{L})_{bandgap-down-SX}= \frac{0.7 \mu m}{0.35 \mu m}$
+	
+	\item $(\frac{W}{L})_{bandgap-up-DX}= \frac{4.067 \mu m}{0.35 \mu m}$
+	
+	\item $(\frac{W}{L})_{bandgap-up-SX}= \frac{4.067 \mu m}{0.35 \mu m}$
+
+	\item $R_{ref} = 7.168 K \Omega$
+
+\end{itemize}
+
 % subsection noise_corner_frequency (end)
 % subsection white_noise (end)
 % section noise (end)
-
-
 % subsection phase_margin (end)_sub
 % subsubsection _sub (end)
 % section gain (end)
+
+\section{Testbench}
+
+\centering
+\includegraphics[width=0.8\textwidth]{Capitoli/tb.png}
+\raggedright
+
+
+
+To verify the performance of our final stage we try to use it in buffer configuration and this are the results:
+
+As we expected using the ahuja compensation topology we can have some decoupling between the bandwith and the load capacitance:
+
+
+\centering
+\includegraphics[width=1\textwidth]{Capitoli/cap.png}
+\raggedright
+
+\newpage
+
+\section{Results}
+
+\centering
+\label{my-label}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\#      & W         & L     & I      \\ \hline
+M1 M2   & 40u       & 1.6u  & 19.42u \\ \hline
+M3 M4   & 10.9375u  & 3.5u  & 19.42u \\ \hline
+M5      & 17.5u     & 0.35u & 38.84u \\ \hline
+M6      & 17.5u     & 0.7u  & 38.71u \\ \hline
+M7      & 35u       & 0.7u  & 38.71u \\ \hline
+M-cas    & 4.375u    & 0.35u & 19.42u \\ \hline
+M-diode  & 2u        & 0.35u & 38.71u \\ \hline
+M-BG-DW-SX & 0.7u      & 0.35u & 10.62u \\ \hline
+M-BG-DW-DX & 0.831u    & 0.35u & 9.074u \\ \hline
+M-BG-UP-SX & 4.067u    & 0.35u & 10.62u \\ \hline
+M-BG-UP-DX & 4.067u    & 0.35u      & 9.074u \\ \hline
+R-ref      & 7.168kohm &       &        \\ \hline
+\end{tabular}
+
+
+\begin{equation}
+  E_n^2=( 11.51 \frac {nV} { \sqrt{HZ}})^2
+\end{equation}
+
+\begin{equation}
+  \phi_m=76.23
+\end{equation}
+
+\begin{equation}
+  GBWP=41.83MHz
+\end{equation}
+
+\begin{equation}
+  Gain=80.34dB
+\end{equation}
+% section results (end)
+
+\begin{equation}
+  Current \ \ Consumption = 97.24 \mu A
+\end{equation}
+
+
+
 % chapter part_2 (end)
