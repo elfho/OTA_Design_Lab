@@ -1,6 +1,11 @@
 \chapter{Part 1} % (fold)
 \label{cha:part_1}
 
+\centering
+\includegraphics[width=1\textwidth]{Capitoli/whole.png}
+\raggedright
+
+
 \section{Gain, Bandwith and Stability} % (fold)
 \label{sec:gain_and_bandwith}
 
@@ -44,12 +49,16 @@ Then starting from the bandwith and the phase margin specifications we tune the 
 Assuming for this step $C_c = 1pF$
 Then we will check if the choosen values keep us in the stability contraint.
 
+
+
+\centering
+\includegraphics[width=1\textwidth]{Capitoli/gainprimo.png}
+\raggedright
+
 % section bandwidth (end)
 
 \subsection{Phase Margin} % (fold)
 \label{subsec:phase_margin}
-
-
 
 \begin{equation}
 	C_c> \frac{g_{m1}}{g_{m6}}(C_1+C_L)
@@ -86,6 +95,11 @@ Now that we know as $L_6$ as $w_6$ we can verify the real value of $C_1$ which r
 
 which confirm our hypotesys made in the step of the compensation capacitance sizing\footnote{As the real value is lower than the one used for calculation the performances are going to be improved}.
 
+\centering
+\includegraphics[width=1\textwidth]{Capitoli/gainph1.png}
+\raggedright
+
+
 % section phase_margin (end)
 
 % section gain_and_bandwith (end)
@@ -107,10 +121,21 @@ The input referred noise with this sizing results to be:
 In order to reduce $g_{m3,4}$ and to get our target we decide to increase $V_{ov_4}$ to $0.4V$
 % subsubsection white_noise (end)
 
+\centering
+\includegraphics[width=1\textwidth]{Capitoli/wn1st.png}
+\raggedright
+
+
+
 \subsection{Noise Corner Frequency} % (fold)
 \label{ssub:noise_corner_frequency}
 
 The NCF results to be in order of $100KHz$ so we decided to increse $(WL)_{3,4}$ of a factor 6,5 in order to have the NCF below 10KHz.
+
+
+\centering
+\includegraphics[width=1\textwidth]{Capitoli/ncf1.png}
+\raggedright
 
 % subsubsection noise_corner_frequency (end)
 
@@ -140,28 +165,6 @@ The NCF results to be in order of $100KHz$ so we decided to increse $(WL)_{3,4}$
 \begin{equation}
   Current \ \ Consumption = 250 \mu A
 \end{equation}
-
-\begin{center}
-\begin{circuitikz} 
-    
-    \ctikzset{tripoles/mos style/arrows}
-    \draw (-2,-1) node[ pmos ] {}; %input sx
-   \draw (2,-1) node[ pmos,xscale = -1 ] {};  %input dx
-   \draw (0,0.75) node[ pmos ] {}; %tail
-   \draw (-2,-2) node[ nmos,xscale = -1 ] {}; %mirror sx
-   \draw (2,-2) node[ nmos ] {};  %mirror dx
-   \draw (-2,0) to[short] (2,0);
-   \draw (-2,0) to[short] (-2,-0.5);
-   \draw(2,0) to[short] (2,-0.5);
-   \draw(-2,-1.5) to[short] (0,-1.5);
-   \draw(-2.5,1.5) to[short] (2.5,1.5);
-   \draw(-1.1,-2) to[short] (1.1,-2);
-   \draw(-2.5,-2.77) to[short] (2.5,-2.77);
-   \draw(-2.5,-2.77) to[short] (2.5,-2.77);
-   \draw(0,-1.5) to[short] (0,-2);
-   \draw (0,-2.77) -- (0,-2.77) node[ground]{};
-
-\end{circuitikz} \end{center}
 
 
 % chapter part_1 (end)

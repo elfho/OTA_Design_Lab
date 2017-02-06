@@ -15,10 +15,7 @@ For the gain , the current buffer will act as cascode for the active load of the
 For this design we decided to split the gain in the following way:
 
 \begin{equation}
-	G_{1^{st}_Stage}=286
-\end{equation}
-
-\begin{equation}
+	G_{1^{st}_Stage}=286 \ \ \ \ \ \ \ \ 
 	G_{2^{nd}_{Stage}}=35
 \end{equation}
 
@@ -46,29 +43,39 @@ We set the Overdrive voltages as :
 
 \end{itemize}
 
+
+\centering
+\includegraphics[width=1\textwidth]{Capitoli/dc.png}
+\raggedright
+
+
 \subsection{Bandwith} % (fold)
 \label{sub:bandwith}
 
 As in the previous design ,starting from the GBWP specification and assuming for the moment $C_c=1pF$ we get $g_{m1}= 250 \mu S$ 
+
+\centering
+\includegraphics[width=0.7\textwidth]{Capitoli/gnp.png}
+
+\raggedright
+
+
 
 % subsection bandwith (end)
 
 \subsection{Phase Margin} % (fold)
 \label{sub:phase_margin}
 
-The compensation technique will not change the frequency of the first pole, and we can say with coarse approximation that it gives a negative zero at $f_z= 	\frac{g_{mCAS}}{2 \pi C_c}$ which improves our phase margin and .
-
-\begin{equation}
-	\phi _m= 180 - 90 + arctg(\frac{g_{m1}}{g_{mCAS}}) - arct()
-\end{equation}
-
-
-From the simulation it results that we have an in-band-doublet which gives as a peaking in the phase margin , taking as to a value of 144.7 phase margin.
-
+The compensation technique will not change the frequency of the first pole, and from the simulations it's evident the presence of an in-band doublet, taking as to 76.23 of phase margin.
 
 
 It turns out by the simulation that we cannot have the gate of M6 at 0.8V as it's lower limit it's fixed at 1.2V by the saturation of $M_{CAS2}$.
-So we decided to add a transdiode between the source of M6 and ground , in order to have a consistent bias.
+So we decided to add a transdiode between the source of M6 and ground , in order to have a consistent bias accepting a reduction of the output voltage swing\footnote{Which in this case was not a constraint}.
+
+\centering
+\includegraphics[width=1\textwidth]{Capitoli/gain2.png}
+\raggedright
+
 
 \section{Noise} % (fold)
 \label{sec:noise}
@@ -79,12 +86,22 @@ So we decided to add a transdiode between the source of M6 and ground , in order
 
 The input reffered noise is going to be same as in stage of part 1 as the transconductance of M1, M2, M3 and M4 were not been modified.
 
+\centering
+\includegraphics[width=1\textwidth]{Capitoli/wn.png}
+\raggedright
+
+
 \subsection{Noise Corner Frequency} % (fold)
 \label{sub:noise_corner_frequency}
 
 The noise corner frequency results to be 8.358KHz and the simulation confirms our result.
 
 
+
+
+\centering
+\includegraphics[width=1\textwidth]{Capitoli/ncf.png}
+\raggedright
 
 % subsection noise_corner_frequency (end)
 % subsection white_noise (end)
